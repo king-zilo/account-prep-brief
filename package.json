@@ -1,0 +1,12 @@
+{
+  "name": "account-prep-brief",
+  "version": "1.0.0",
+  "description": "Generate a one-page account prep brief before every customer call.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=20" }
+}

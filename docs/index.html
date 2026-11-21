@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Account Prep Brief</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">AP</span>
+      <div>
+        <h1>Account Prep Brief</h1>
+        <p class="sub">Everything you need before a customer call, on one page.</p>
+      </div>
+    </div>
+    <div id="owner" class="owner"></div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>Your accounts</h2>
+      <ul id="account-list" class="account-list"></ul>
+    </aside>
+
+    <main id="main">
+      <section class="empty" id="empty">
+        <h2>Pick an account to generate a brief</h2>
+        <p>The brief pulls together CRM details, product usage, support tickets, NPS, and recent emails, then flags risks, opportunities, talking points, and a ready-to-send agenda email.</p>
+      </section>
+
+      <section id="brief" class="brief hidden">
+        <div class="brief-header">
+          <div>
+            <h2 id="b-name"></h2>
+            <p id="b-meta" class="muted"></p>
+          </div>
+          <div class="actions no-print">
+            <button id="copy-brief" class="btn">Copy brief</button>
+            <button id="print" class="btn">Print / PDF</button>
+          </div>
+        </div>
+
+        <div class="metrics" id="b-metrics"></div>
+
+        <details class="card notes no-print" id="notes-card">
+          <summary>Add notes from your latest call or email (optional)</summary>
+          <textarea id="notes" rows="4" placeholder="Paste raw notes here, e.g. &quot;CFO mentioned a spend freeze and they are evaluating alternatives.&quot;"></textarea>
+          <div class="notes-actions">
+            <button id="regenerate" class="btn primary">Update brief</button>
+            <span id="gen-time" class="muted small"></span>
+          </div>
+        </details>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>Risks</h3>
+            <ul id="b-risks" class="findings"></ul>
+          </div>
+          <div class="card">
+            <h3>Opportunities</h3>
+            <ul id="b-opps" class="findings"></ul>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>Talking points</h3>
+            <ol id="b-talking"></ol>
+          </div>
+          <div class="card">
+            <h3>Questions to ask</h3>
+            <ul id="b-questions"></ul>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>Stakeholders</h3>
+            <ul id="b-people" class="people"></ul>
+          </div>
+          <div class="card">
+            <h3>Recent activity</h3>
+            <ul id="b-activity" class="timeline"></ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Agenda email draft</h3>
+            <button id="copy-email" class="btn no-print">Copy email</button>
+          </div>
+          <p class="small"><strong>To:</strong> <span id="e-to"></span></p>
+          <p class="small"><strong>Subject:</strong> <span id="e-subject"></span></p>
+          <textarea id="e-body" rows="16"></textarea>
+        </div>
+
+        <details class="card">
+          <summary>How the health score was calculated</summary>
+          <ul id="b-drivers" class="drivers"></ul>
+          <p class="muted small">Starts at 85, adjusted by each signal below, capped between 0 and 100.</p>
+        </details>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

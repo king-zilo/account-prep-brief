@@ -1,0 +1,118 @@
+{
+  "vendor": "Flowstack",
+  "owner": { "name": "Jordan Lee", "title": "Account Manager", "email": "jordan.lee@flowstack.example" },
+  "accounts": [
+    {
+      "id": "northwind",
+      "name": "Northwind Logistics",
+      "industry": "Logistics",
+      "segment": "Mid-Market",
+      "plan": "Business",
+      "arr": 84000,
+      "seats": 150,
+      "renewalInDays": 45,
+      "nps": 7,
+      "usage": [128, 131, 125, 112, 104, 99],
+      "goals": [
+        "Cut dispatch planning time by 30%",
+        "Give regional managers a single view of shipments"
+      ],
+      "contacts": [
+        { "name": "Dana Ortiz", "title": "Director of Operations", "role": "Champion", "sentiment": "positive", "lastContactDaysAgo": 52, "status": "left" },
+        { "name": "Marcus Webb", "title": "VP Supply Chain", "role": "Economic buyer", "sentiment": "neutral", "lastContactDaysAgo": 38 },
+        { "name": "Priya Shah", "title": "Ops Analyst", "role": "Power user", "sentiment": "negative", "lastContactDaysAgo": 6 }
+      ],
+      "tickets": [
+        { "id": "SUP-4821", "title": "Route export fails for files over 10k rows", "priority": "P1", "status": "open", "openedDaysAgo": 9 },
+        { "id": "SUP-4790", "title": "SSO login loop on Safari", "priority": "P3", "status": "closed", "openedDaysAgo": 30 }
+      ],
+      "activity": [
+        { "type": "email", "daysAgo": 6, "from": "Priya Shah", "summary": "The export bug is holding up our weekly reporting. Leadership is evaluating alternatives if this is not fixed soon." },
+        { "type": "note", "daysAgo": 20, "from": "Jordan Lee", "summary": "Heard Dana Ortiz left the company. Need to find out who owns the rollout now." },
+        { "type": "meeting", "daysAgo": 38, "from": "Marcus Webb", "summary": "Quarterly review. Marcus asked about budget for next year and wants a clear ROI story before renewal." },
+        { "type": "call", "daysAgo": 52, "from": "Dana Ortiz", "summary": "Dana happy with dispatch dashboards. Planning to train two more regional teams." }
+      ]
+    },
+    {
+      "id": "brightpath",
+      "name": "Brightpath Health",
+      "industry": "Healthcare",
+      "segment": "Enterprise",
+      "plan": "Enterprise",
+      "arr": 210000,
+      "seats": 300,
+      "renewalInDays": 120,
+      "nps": 9,
+      "usage": [231, 240, 252, 266, 279, 288],
+      "goals": [
+        "Standardize scheduling across 12 clinics",
+        "Reduce patient no-show rate"
+      ],
+      "contacts": [
+        { "name": "Elena Park", "title": "Chief Operating Officer", "role": "Executive sponsor", "sentiment": "positive", "lastContactDaysAgo": 21 },
+        { "name": "Tom Reyes", "title": "Director of Clinic Operations", "role": "Champion", "sentiment": "positive", "lastContactDaysAgo": 4 },
+        { "name": "Grace Kim", "title": "Procurement Manager", "role": "Economic buyer", "sentiment": "neutral", "lastContactDaysAgo": 64 }
+      ],
+      "tickets": [
+        { "id": "SUP-4855", "title": "Request: custom field on appointment report", "priority": "P3", "status": "open", "openedDaysAgo": 3 }
+      ],
+      "activity": [
+        { "type": "call", "daysAgo": 4, "from": "Tom Reyes", "summary": "Tom said the clinics love the new scheduling view. Asked about rolling out to the billing department next quarter and adding more seats." },
+        { "type": "email", "daysAgo": 21, "from": "Elena Park", "summary": "Elena shared no-show rate dropped 18%. Open to being a reference for other health systems." },
+        { "type": "meeting", "daysAgo": 64, "from": "Grace Kim", "summary": "Procurement review of current contract terms. No concerns raised." }
+      ]
+    },
+    {
+      "id": "summit",
+      "name": "Summit Retail Group",
+      "industry": "Retail",
+      "segment": "Mid-Market",
+      "plan": "Business",
+      "arr": 62000,
+      "seats": 120,
+      "renewalInDays": 75,
+      "nps": 7,
+      "usage": [88, 90, 87, 86, 85, 83],
+      "goals": [
+        "Automate weekly store inventory reports"
+      ],
+      "contacts": [
+        { "name": "Ben Carter", "title": "Head of Store Operations", "role": "Champion", "sentiment": "neutral", "lastContactDaysAgo": 41 },
+        { "name": "Laura Chen", "title": "CFO", "role": "Economic buyer", "sentiment": "neutral", "lastContactDaysAgo": 140 }
+      ],
+      "tickets": [
+        { "id": "SUP-4802", "title": "Inventory sync delayed by several hours", "priority": "P2", "status": "open", "openedDaysAgo": 18 },
+        { "id": "SUP-4833", "title": "Dashboard filters reset after refresh", "priority": "P2", "status": "open", "openedDaysAgo": 11 }
+      ],
+      "activity": [
+        { "type": "email", "daysAgo": 41, "from": "Ben Carter", "summary": "Ben confirmed the inventory report is running but sync is slower than expected." },
+        { "type": "meeting", "daysAgo": 140, "from": "Laura Chen", "summary": "Annual business review. Laura wants to see measurable time savings from store teams." }
+      ]
+    },
+    {
+      "id": "cobalt",
+      "name": "Cobalt Financial",
+      "industry": "Financial Services",
+      "segment": "Enterprise",
+      "plan": "Enterprise",
+      "arr": 156000,
+      "seats": 250,
+      "renewalInDays": 290,
+      "nps": 8,
+      "usage": [20, 45, 70, 92, 105, 112],
+      "goals": [
+        "Replace spreadsheet-based approvals",
+        "Pass internal audit with full approval history"
+      ],
+      "contacts": [
+        { "name": "Raj Patel", "title": "VP Finance Operations", "role": "Champion", "sentiment": "positive", "lastContactDaysAgo": 9 },
+        { "name": "Sofia Alvarez", "title": "CIO", "role": "Executive sponsor", "sentiment": "neutral", "lastContactDaysAgo": 33 }
+      ],
+      "tickets": [],
+      "activity": [
+        { "type": "meeting", "daysAgo": 9, "from": "Raj Patel", "summary": "Onboarding check-in. Accounts payable team is live. Treasury and audit teams have not started training yet." },
+        { "type": "email", "daysAgo": 33, "from": "Sofia Alvarez", "summary": "Sofia asked for our security documentation ahead of the internal audit." }
+      ]
+    }
+  ]
+}
