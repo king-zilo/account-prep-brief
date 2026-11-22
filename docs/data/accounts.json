@@ -1,6 +1,6 @@
 {
   "vendor": "Factory",
-  "owner": { "name": "Jordan Lee", "title": "Account Manager", "email": "jordan.lee@flowstack.example" },
+  "owner": { "name": "Ben Olsen", "title": "Account Manager" },
   "accounts": [
     {
       "id": "northwind",
@@ -28,7 +28,7 @@
       ],
       "activity": [
         { "type": "email", "daysAgo": 6, "from": "Priya Shah", "summary": "The export bug is holding up our weekly reporting. Leadership is evaluating alternatives if this is not fixed soon." },
-        { "type": "note", "daysAgo": 20, "from": "Jordan Lee", "summary": "Heard Dana Ortiz left the company. Need to find out who owns the rollout now." },
+        { "type": "note", "daysAgo": 20, "from": "Ben Olsen", "summary": "Heard Dana Ortiz left the company. Need to find out who owns the rollout now." },
         { "type": "meeting", "daysAgo": 38, "from": "Marcus Webb", "summary": "Quarterly review. Marcus asked about budget for next year and wants a clear ROI story before renewal." },
         { "type": "call", "daysAgo": 52, "from": "Dana Ortiz", "summary": "Dana happy with dispatch dashboards. Planning to train two more regional teams." }
       ]

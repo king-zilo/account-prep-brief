@@ -5,7 +5,7 @@ import { exampleProspect, generatePlan, normalizeDomain, parseContacts, validate
 import { lookupCompany, titleMatches } from '../docs/research.js';
 
 const product = JSON.parse(readFileSync(new URL('../docs/data/product.json', import.meta.url), 'utf8'));
-const owner = { name: 'Jordan Lee', title: 'Account Executive' };
+const owner = { name: 'Ben Olsen', title: 'Account Executive' };
 const example = () => ({ ...exampleProspect(), id: 'prospect-1' });
 const planFor = (input) => generatePlan(input, product, { owner });
 
