@@ -1,6 +1,6 @@
 {
   "vendor": "Factory",
-  "owner": { "name": "Ben Olsen", "title": "Account Manager" },
+  "owner": { "name": "Ben Olsen", "title": "Account Executive" },
   "accounts": [
     {
       "id": "northwind",

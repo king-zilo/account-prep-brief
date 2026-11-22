@@ -338,7 +338,7 @@ export function generateBrief(account, { notes = '', today = new Date(), owner, 
     recentActivity: [...account.activity]
       .sort((x, y) => x.daysAgo - y.daysAgo)
       .map((item) => ({ ...item, date: formatDate(at(item.daysAgo)) })),
-    email: buildEmail(account, findings, renewalDate, owner || { name: 'Your name', title: 'Account Manager' }, vendor),
+    email: buildEmail(account, findings, renewalDate, owner || { name: 'Your name', title: 'Account Executive' }, vendor),
   };
   brief.markdown = toMarkdown(brief);
   return brief;
