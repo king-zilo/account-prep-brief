@@ -9,6 +9,7 @@ Prepping for a call usually means 20 to 30 minutes of clicking through the CRM, 
 - **Talking points and questions to ask**, generated from those findings
 - **Stakeholder map**, including champions who have left
 - **Agenda email draft** addressed to the right person, ready to copy
+- **Add your own accounts** with a short form, then edit them and watch the brief update
 - **Paste your own notes** from a call or email, and the brief updates with any new signals
 - Copy the brief as Markdown, or print it to PDF
 
@@ -22,7 +23,7 @@ To run it locally instead (Node.js 20 or newer, no dependencies):
 
 ```bash
 npm start        # http://localhost:3000
-npm test         # 8 tests
+npm test         # 14 tests
 ```
 
 ## How it works
@@ -31,25 +32,29 @@ npm test         # 8 tests
 | --- | --- |
 | `docs/data/accounts.json` | Sample accounts (fictional). Dates are stored as "days ago" so the demo always looks current. |
 | `docs/brief.js` | All the logic: health score, risk and opportunity rules, keyword signals, talking points, email draft. |
+| `docs/custom-accounts.js` | Turns the New account form into an account: validation, dates, usage trend, and ticket parsing. |
 | `docs/app.js`, `docs/index.html`, `docs/styles.css` | The single-page UI (plain HTML, CSS, and JavaScript). |
 | `server.js` | Optional local static server for `npm start`. |
-| `test/brief.test.js` | Tests for the scoring rules, signals, email, and server. |
+| `test/` | Tests for the scoring rules, signals, email, the New account form logic, and the server. |
 
 The health score starts at 85 and each finding adds or subtracts points. For example, a departed champion is -20, an open P1 ticket is -15, and seat utilization above 90% is +5. Keyword signals such as "evaluating alternatives" or "more seats" are detected in recent activity and in any notes you paste. The result is clamped to 0 to 100.
 
 The rules are deterministic, so the demo works offline and always gives the same result. Connecting a real CRM or an LLM would be a next step (see below).
 
-## Demo script (about 5 minutes)
+## Demo script (about 6 minutes)
 
 1. **The problem.** "Before each call I spend about 30 minutes pulling context from five tools."
 2. **Healthy account: Brightpath Health.** The score is 100. Point out the expansion and reference opportunities, which the app found in a call note and an email.
 3. **At-risk account: Northwind Logistics.** The champion has left, there is an open P1 ticket, usage is down, and the email mentions "evaluating alternatives." The email draft goes to the economic buyer because the champion is gone.
-4. **Live update: Summit Retail Group.** Open "Add notes" and paste:
-   `Laura mentioned a spend freeze and they are evaluating alternatives.`
-   Click **Update brief**. The score drops, and two new risks appear, labeled "from your notes."
-5. **Take it with you.** Click **Copy email** or **Print / PDF**.
-6. **How I built it with Droid.** Walk through the prompts, the fixes made along the way, and the tests.
+4. **Add a new account live.** Click **+ New account**. Type a few fields yourself, or click **Fill with example** to load Acme Robotics, then click **Generate brief**. It scores 90 (Healthy) and flags expansion interest from the call summary.
+5. **Change it and watch the brief react.** Click **Edit account**, check **Champion has left the company**, and save. The score drops to 70, a new risk appears, and the email switches to the economic buyer.
+6. **Paste fresh notes.** Open "Add notes" and paste:
+   `Morgan said budget is tight and they are evaluating alternatives.`
+   Click **Update brief**. The score drops to 50, and two new risks appear, labeled "from your notes."
+7. **Take it with you.** Click **Copy email** or **Print / PDF**.
+8. **How I built it with Droid.** Walk through the prompts, the fixes made along the way, and the tests.
 
+Accounts you add are saved in your browser only (local storage). Use **Delete** to remove them after the demo.
 ## Next steps
 
 - Pull accounts from Salesforce or HubSpot instead of `docs/data/accounts.json`

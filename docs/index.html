@@ -20,13 +20,14 @@
 
   <div class="layout">
     <aside class="sidebar">
+      <button id="new-account" class="btn primary new-account">+ New account</button>
       <h2>Your accounts</h2>
       <ul id="account-list" class="account-list"></ul>
     </aside>
 
     <main id="main">
       <section class="empty" id="empty">
-        <h2>Pick an account to generate a brief</h2>
+        <h2>Pick an account, or add a new one</h2>
         <p>The brief pulls together CRM details, product usage, support tickets, NPS, and recent emails, then flags risks, opportunities, talking points, and a ready-to-send agenda email.</p>
       </section>
 
@@ -37,6 +38,8 @@
             <p id="b-meta" class="muted"></p>
           </div>
           <div class="actions no-print">
+            <button id="edit-account" class="btn hidden">Edit account</button>
+            <button id="delete-account" class="btn danger hidden">Delete</button>
             <button id="copy-brief" class="btn">Copy brief</button>
             <button id="print" class="btn">Print / PDF</button>
           </div>
@@ -105,6 +108,68 @@
     </main>
   </div>
 
+  <dialog id="account-dialog" class="account-dialog" aria-labelledby="dialog-title">
+    <form id="account-form" novalidate>
+      <div class="dialog-head">
+        <div>
+          <h2 id="dialog-title">New account</h2>
+          <p class="muted small">Fields marked * are required. The brief generates as soon as you save.</p>
+        </div>
+        <button type="button" id="fill-example" class="btn">Fill with example</button>
+      </div>
+
+      <fieldset>
+        <legend>Company</legend>
+        <label>Company name *<input name="name" autocomplete="off" /></label>
+        <label>Industry<input name="industry" autocomplete="off" /></label>
+        <label>Segment
+          <select name="segment"><option>SMB</option><option selected>Mid-Market</option><option>Enterprise</option></select>
+        </label>
+        <label>Plan
+          <select name="plan"><option>Starter</option><option selected>Business</option><option>Enterprise</option></select>
+        </label>
+        <label class="full">Top customer goal<input name="goal" placeholder="e.g. Cut onboarding time in half" autocomplete="off" /></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Contract and usage</legend>
+        <label>ARR ($) *<input name="arr" type="number" min="0" step="1000" inputmode="numeric" /></label>
+        <label>Renewal date *<input name="renewalDate" type="date" /></label>
+        <label>Licensed seats *<input name="seats" type="number" min="1" inputmode="numeric" /></label>
+        <label>NPS (0 to 10) *<input name="nps" type="number" min="0" max="10" inputmode="numeric" /></label>
+        <label>Active users this month *<input name="activeNow" type="number" min="0" inputmode="numeric" /></label>
+        <label>Active users 3 months ago<input name="activeBefore" type="number" min="0" inputmode="numeric" placeholder="Leave blank if unknown" /></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>People</legend>
+        <label>Champion name<input name="championName" autocomplete="off" /></label>
+        <label>Champion title<input name="championTitle" autocomplete="off" /></label>
+        <label class="check full"><input name="championLeft" type="checkbox" /> Champion has left the company</label>
+        <label>Economic buyer name<input name="buyerName" autocomplete="off" /></label>
+        <label>Economic buyer title<input name="buyerTitle" autocomplete="off" /></label>
+        <label>Last contact date<input name="lastContactDate" type="date" /></label>
+        <label>Overall sentiment
+          <select name="sentiment"><option value="positive">Positive</option><option value="neutral" selected>Neutral</option><option value="negative">Negative</option></select>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Recent context</legend>
+        <label class="full">Open support tickets
+          <textarea name="tickets" rows="3" placeholder="One per line, starting with P1, P2, or P3. Example: P1: Data export failing"></textarea>
+        </label>
+        <label class="full">Latest email or call summary
+          <textarea name="recentActivity" rows="3" placeholder="Paste what the customer said. Phrases like &quot;evaluating alternatives&quot; or &quot;more seats&quot; are flagged automatically."></textarea>
+        </label>
+      </fieldset>
+
+      <div class="dialog-actions">
+        <button type="button" id="cancel-account" class="btn">Cancel</button>
+        <button type="submit" id="save-account" class="btn primary">Generate brief</button>
+      </div>
+    </form>
+  </dialog>
   <div id="toast" class="toast"></div>
   <script type="module" src="./app.js"></script>
 </body>

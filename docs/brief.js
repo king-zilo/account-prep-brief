@@ -157,7 +157,7 @@ function dataFindings(account) {
     findings.push({
       type: 'risk',
       title: `Open P1: ${ticket.title}`,
-      detail: `${ticket.id}, open for ${ticket.openedDaysAgo} days.`,
+      detail: ticket.openedDaysAgo == null ? `${ticket.id}.` : `${ticket.id}, open for ${ticket.openedDaysAgo} days.`,
       source: 'Support',
       impact: -15,
       talkingPoint: `Get a status update on ${ticket.id} from support before the call and lead with it.`,
