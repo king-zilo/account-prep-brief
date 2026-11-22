@@ -285,7 +285,7 @@ ${brief.email.body}
 `;
 }
 
-export function generateBrief(account, { notes = '', today = new Date(), owner, vendor = 'Flowstack' } = {}) {
+export function generateBrief(account, { notes = '', today = new Date(), owner, vendor = 'Factory' } = {}) {
   const at = (daysAgo) => new Date(today.getTime() - daysAgo * DAY_MS);
   const renewalDate = new Date(today.getTime() + account.renewalInDays * DAY_MS);
 

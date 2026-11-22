@@ -1,0 +1,96 @@
+{
+  "company": "Factory",
+  "product": "Droids",
+  "pitch": "Factory's Droids are AI agents that take on real software engineering work, from migrations and refactors to code review, testing, and incident response.",
+  "useCases": [
+    {
+      "id": "migration",
+      "name": "Migrations and modernization",
+      "pain": "Legacy code and framework upgrades eat months of senior engineering time.",
+      "value": "Droids can take on large migrations and refactors in parallel, so the team modernizes without pausing roadmap work.",
+      "question": "Which migration or upgrade is on the roadmap that nobody has had time to start?",
+      "metric": "Share of the migration completed by Droids during the pilot",
+      "triggers": ["migration", "mna"],
+      "industries": ["finance", "public", "manufacturing"],
+      "signals": ["migrat", "legacy", "moderniz", "monolith", "cobol", "mainframe", "upgrade", "tech debt", "technical debt", "on-prem"]
+    },
+    {
+      "id": "velocity",
+      "name": "Developer velocity",
+      "pain": "Hiring can't keep pace with the roadmap, and engineers lose time to toil instead of features.",
+      "value": "Droids can pick up tickets end to end, so the same team ships more of the roadmap.",
+      "question": "How big is the backlog compared to what the team ships each quarter?",
+      "metric": "Tickets completed per sprint, before and during the pilot",
+      "triggers": ["hiring", "funding", "leader", "ai"],
+      "industries": ["software", "retail"],
+      "signals": ["backlog", "velocity", "roadmap", "hiring", "headcount", "understaffed", "ship faster", "toil", "deadline"]
+    },
+    {
+      "id": "quality",
+      "name": "Code review and quality",
+      "pain": "Code reviews slow down merges, and test coverage lags behind new code.",
+      "value": "Droids can review pull requests and write tests, so quality improves without slowing merges.",
+      "question": "How long does a typical pull request wait for review?",
+      "metric": "Time to first review and change in test coverage",
+      "triggers": ["leader"],
+      "industries": ["healthcare"],
+      "signals": ["code review", "pull request", "test coverage", "testing", "bugs", "quality", "incident", "flaky", "outage"]
+    },
+    {
+      "id": "efficiency",
+      "name": "Engineering efficiency",
+      "pain": "Budgets are flat or shrinking while delivery expectations stay the same.",
+      "value": "Droids can help a leaner team keep shipping, with clear visibility into the work completed.",
+      "question": "What has leadership asked engineering to deliver with the current headcount?",
+      "metric": "Engineering hours saved on the pilot's target work",
+      "triggers": ["costcut", "mna"],
+      "industries": [],
+      "signals": ["cost", "budget", "layoff", "efficiency", "do more with less", "consolidat", "hiring freeze"]
+    },
+    {
+      "id": "governance",
+      "name": "Secure, governed AI adoption",
+      "pain": "Engineers want AI tools, but security and compliance teams need control over code and data.",
+      "value": "Factory gives engineering leaders a governed way to adopt AI agents, so adoption happens with security's approval instead of through unapproved tools.",
+      "question": "What does your security team require before approving an AI coding tool?",
+      "metric": "Security review approved, with the controls the customer requires",
+      "triggers": ["security", "ai"],
+      "industries": ["finance", "healthcare", "public"],
+      "signals": ["security", "compliance", "soc 2", "hipaa", "pci", "governance", "audit", "copilot", "ai policy", "regulat"]
+    }
+  ],
+  "personas": [
+    {
+      "role": "Security reviewer",
+      "titles": "CISO, Head of Application Security",
+      "search": "CISO",
+      "why": "Must approve any AI tool that touches source code.",
+      "match": "\\b(ciso|security|infosec|compliance)\\b"
+    },
+    {
+      "role": "Economic buyer",
+      "titles": "CTO, VP Engineering",
+      "search": "VP Engineering",
+      "why": "Owns the engineering budget and roadmap commitments.",
+      "match": "\\b(cto|chief technology|chief information|cio|vp|vice president|svp|evp|head of engineering)\\b"
+    },
+    {
+      "role": "Technical evaluator",
+      "titles": "Staff or Principal Engineer, Engineering Manager",
+      "search": "Principal Engineer",
+      "why": "Tests Droids on real code and shapes the team's opinion.",
+      "match": "\\b(staff|principal|architect|engineering manager|tech lead|lead engineer|senior engineer)\\b"
+    },
+    {
+      "role": "Champion",
+      "titles": "Director of Engineering, Head of Platform or Developer Experience",
+      "search": "Director of Engineering",
+      "why": "Feels the day-to-day pain and can sponsor a pilot.",
+      "match": "\\b(director|head of|platform|developer experience|devex|productivity)\\b"
+    }
+  ],
+  "discoveryQuestions": [
+    "How does your team use AI coding tools today, if at all?",
+    "Who would need to approve a pilot, and what would make it a success?"
+  ]
+}

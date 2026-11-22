@@ -20,7 +20,14 @@
 
   <div class="layout">
     <aside class="sidebar">
-      <button id="new-account" class="btn primary new-account">+ New account</button>
+      <div class="sidebar-actions">
+        <button id="new-account" class="btn primary">+ New account</button>
+        <button id="new-prospect" class="btn primary">+ New prospect</button>
+      </div>
+      <div id="prospect-section" class="hidden">
+        <h2>Prospects</h2>
+        <ul id="prospect-list" class="account-list"></ul>
+      </div>
       <h2>Your accounts</h2>
       <ul id="account-list" class="account-list"></ul>
     </aside>
@@ -28,9 +35,83 @@
     <main id="main">
       <section class="empty" id="empty">
         <h2>Pick an account, or add a new one</h2>
-        <p>The brief pulls together CRM details, product usage, support tickets, NPS, and recent emails, then flags risks, opportunities, talking points, and a ready-to-send agenda email.</p>
+        <p>For existing customers, the brief pulls together CRM details, product usage, support tickets, NPS, and recent emails, then flags risks, opportunities, talking points, and a ready-to-send agenda email.</p>
+        <p>For a greenfield prospect, click <strong>+ New prospect</strong> to get company research, hypotheses, who to target, an outreach sequence, and a 30/60/90-day plan.</p>
       </section>
 
+      <section id="plan" class="hidden">
+        <div class="brief-header">
+          <div>
+            <h2 id="p-name"></h2>
+            <p id="p-meta" class="muted"></p>
+          </div>
+          <div class="actions no-print">
+            <button id="edit-prospect" class="btn">Edit prospect</button>
+            <button id="delete-prospect" class="btn danger">Delete</button>
+            <button id="copy-plan" class="btn">Copy plan</button>
+            <button id="print-plan" class="btn">Print / PDF</button>
+          </div>
+        </div>
+
+        <div class="metrics" id="p-metrics"></div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Company research</h3>
+            <button id="rerun-research" class="btn no-print">Look up again</button>
+          </div>
+          <div class="research">
+            <div id="p-wiki" class="wiki" aria-live="polite"></div>
+            <div>
+              <div class="muted small research-label">Research links (open in a new tab)</div>
+              <ul id="p-links" class="links"></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <div class="card">
+            <h3 id="p-hyp-title">Why they might need it</h3>
+            <ul id="p-hyp" class="findings opp"></ul>
+          </div>
+          <div class="card">
+            <h3>Who to target</h3>
+            <ul id="p-people" class="people personas"></ul>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>Discovery questions</h3>
+            <ul id="p-questions"></ul>
+          </div>
+          <div class="card">
+            <h3>Outreach sequence</h3>
+            <ul id="p-sequence" class="timeline"></ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>First outreach email</h3>
+            <button id="copy-plan-email" class="btn no-print">Copy email</button>
+          </div>
+          <p class="small"><strong>To:</strong> <span id="pe-to"></span></p>
+          <p class="small"><strong>Subject:</strong> <span id="pe-subject"></span></p>
+          <textarea id="pe-body" class="email-body" rows="14"></textarea>
+        </div>
+
+        <div class="card">
+          <h3>30/60/90-day plan</h3>
+          <div id="p-phases" class="phases"></div>
+        </div>
+
+        <details class="card">
+          <summary>How the fit score was calculated</summary>
+          <ul id="p-drivers" class="drivers"></ul>
+          <p class="muted small">Starts at 50, adjusted by team size, triggers, research signals, and known contacts, capped between 0 and 100.</p>
+        </details>
+      </section>
       <section id="brief" class="brief hidden">
         <div class="brief-header">
           <div>
@@ -167,6 +248,52 @@
       <div class="dialog-actions">
         <button type="button" id="cancel-account" class="btn">Cancel</button>
         <button type="submit" id="save-account" class="btn primary">Generate brief</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog id="prospect-dialog" class="account-dialog" aria-labelledby="prospect-dialog-title">
+    <form id="prospect-form" novalidate>
+      <div class="dialog-head">
+        <div>
+          <h2 id="prospect-dialog-title">New prospect</h2>
+          <p class="muted small">Enter what you know so far. Fields marked * are required. You can add more later.</p>
+        </div>
+        <button type="button" id="fill-prospect-example" class="btn">Fill with example</button>
+      </div>
+
+      <fieldset>
+        <legend>Company</legend>
+        <label>Company name *<input name="name" autocomplete="off" placeholder="e.g. Capital One" /></label>
+        <label>Website<input name="website" autocomplete="off" placeholder="example.com" /></label>
+        <label>Industry *
+          <select name="industry" id="prospect-industry"></select>
+        </label>
+        <label>Engineering team size *
+          <select name="engSize" id="prospect-size"></select>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Trigger events</legend>
+        <div id="prospect-triggers" class="triggers"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>What you know</legend>
+        <label class="full">Tech stack
+          <input name="stack" autocomplete="off" placeholder="e.g. Java monolith on-prem, moving to AWS, GitHub Enterprise" />
+        </label>
+        <label class="full">Known contacts
+          <textarea name="contacts" rows="3" placeholder="One per line: Name, Title. Example: Marcus Hill, Director of Platform Engineering"></textarea>
+        </label>
+        <label class="full">Research notes
+          <textarea name="notes" rows="3" placeholder="Anything from their blog, job posts, news, or earnings calls. Words like &quot;legacy&quot;, &quot;backlog&quot;, or &quot;code review&quot; shape the plan."></textarea>
+        </label>
+      </fieldset>
+
+      <div class="dialog-actions">
+        <button type="button" id="cancel-prospect" class="btn">Cancel</button>
+        <button type="submit" id="save-prospect" class="btn primary">Build research and plan</button>
       </div>
     </form>
   </dialog>
