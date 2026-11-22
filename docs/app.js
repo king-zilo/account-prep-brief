@@ -469,7 +469,11 @@ document.querySelector('.sidebar').addEventListener('click', (e) => {
 });
 
 async function init() {
-  const [accountsRes, productRes] = await Promise.all([fetch('./data/accounts.json'), fetch('./data/product.json')]);
+  // GitHub Pages lets browsers cache files for 10 minutes; revalidate so data edits show up on the next load.
+  const [accountsRes, productRes] = await Promise.all([
+    fetch('./data/accounts.json', { cache: 'no-cache' }),
+    fetch('./data/product.json', { cache: 'no-cache' }),
+  ]);
   if (!accountsRes.ok || !productRes.ok) {
     toast('Could not load app data.');
     return;
